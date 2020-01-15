@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D:\maven\com\oracle\ojdbc14\10.2.0.4.0\ojdbc14-10.2.0.4.0.jar" />
+
+    <context id="mysqlTables" targetRuntime="MyBatis3">
+    	<!-- toString 插件 -->
+    	<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+    	<!-- implements Serializable 插件 -->
+    	<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+    	
+    	<!-- 逻辑删除插件 -->
+    	<plugin type="com.plugins.LogicDeletePlugin" />
+    	<plugin type="com.plugins.ListPagePlugin" />
+    	<!-- 注释插件 -->
+    	<plugin type="com.plugins.CommentsPlugin" />
+    	<!-- 插件结束 -->
+ 		<commentGenerator>  
+            <property name="suppressDate" value="true"/>  
+            <property name="suppressAllComments" value="true"/>  
+        </commentGenerator>  
+
+         <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+            connectionURL="jdbc:oracle:thin:@10.24.101.209:1521/stqbdb" userId="qbpt_web" password="iflytek">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="cn.comingnet.qb.cm.bean" targetProject="D:\src\main\java">
+ 		 <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mybatis.qb" targetProject="D:\src\main\resources">
+   			<property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.comingnet.qb.dao" targetProject="D:\src\main\java">
+         	<property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+		 <table tableName="ZDSJ_LCRY_BJSPJL" schema="lnxz_web" domainObjectName="ZDSJ_LCRY_BJSPJL" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+		 
+    </context>
+</generatorConfiguration>

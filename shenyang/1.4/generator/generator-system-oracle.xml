@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D:\work\workspace\mybatis-generator\lib\ojdbc14-10.2.0.5.0.jar" />
+
+    <context id="mysqlTables" targetRuntime="MyBatis3">
+    	<!-- 插件 -->
+    	<!-- 
+    	<plugin type="com.plugins.PaginationPlugin">
+    		<property name="pageQualifiedName" value="com.montnets.edusun.common.Page" />  
+            <property name="fromIndex" value="fromIndex" />  
+            <property name="toIndex" value="toIndex" />  
+            <property name="myBatisRepository" value="com.montnets.edusun.common.MyBatisRepository" />  
+    	</plugin>
+    	
+    	
+    	<plugin type="com.plugins.InsertAndUpdateBatch" />
+    	<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+    	<plugin type="org.mybatis.generator.plugins.SerializablePlugin" / -->
+    	
+    	<!-- jsr303 插件
+    	<plugin type="com.plugins.JSR303Plugin" /> -->
+    	<!-- toString 插件 -->
+    	<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+    	<!-- implements Serializable 插件 -->
+    	<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+    	
+    	<!-- 逻辑删除插件 -->
+    	<plugin type="com.plugins.LogicDeletePlugin" />
+    	<plugin type="com.plugins.ListPagePlugin" />
+    	<!-- 注释插件 -->
+    	<plugin type="com.plugins.CommentsPlugin" />
+    	<!-- 插件结束 -->
+ 		<commentGenerator>  
+            <property name="suppressDate" value="true"/>  
+            <property name="suppressAllComments" value="true"/>  
+        </commentGenerator>  
+
+     <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+            connectionURL="jdbc:oracle:thin:@192.168.1.126:1521:orcl" userId="NGQBPT" password="NGQBPT">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="cn.comingnet.component.system.cm.bean.db" targetProject="D:\work\svn\comingnet\通用公用项目\SourceCode-源代码\comingnet-component\system-cm\src\main\java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis.db.system" targetProject="D:\work\svn\comingnet\通用公用项目\SourceCode-源代码\comingnet-component\system-service\src\main\resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.comingnet.component.system.dao.db" targetProject="D:\work\svn\comingnet\通用公用项目\SourceCode-源代码\comingnet-component\system-service\src\main\java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+		
+	
+   		<table tableName="DY_FORM_FIELD" schema="${db.system}" domainObjectName="TDyFormField" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+		<table tableName="DY_FORM_TABLE" schema="${db.system}" domainObjectName="TDyFormTable" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+		<table tableName="DY_FORM_FIELD_TPL" schema="${db.system}" domainObjectName="TDyFormFieldTpl" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+   		<table tableName="DY_FORM_FIELD_TYPE" schema="${db.system}" domainObjectName="TDyFormFieldType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+   		
+   
+    </context>
+</generatorConfiguration>

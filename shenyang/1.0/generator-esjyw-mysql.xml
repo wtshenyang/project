@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="D:\maven\mysql\mysql-connector-java\5.1.31\mysql-connector-java-5.1.31.jar" />
+
+    <context id="mysqlTables" targetRuntime="MyBatis3">
+    	<!-- 插件 -->
+    	<!-- 
+    	<plugin type="com.plugins.PaginationPlugin">
+    		<property name="pageQualifiedName" value="com.montnets.edusun.common.Page" />  
+            <property name="fromIndex" value="fromIndex" />  
+            <property name="toIndex" value="toIndex" />  
+            <property name="myBatisRepository" value="com.montnets.edusun.common.MyBatisRepository" />  
+    	</plugin>
+    	
+    	
+    	<plugin type="com.plugins.InsertAndUpdateBatch" />
+    	<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+    	<plugin type="org.mybatis.generator.plugins.SerializablePlugin" / -->
+    	
+    	<!-- jsr303 插件
+    	<plugin type="com.plugins.JSR303Plugin" /> -->
+    	<!-- toString 插件 -->
+    	<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+    	<!-- implements Serializable 插件 -->
+    	<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+    	
+    	<!-- 逻辑删除插件 -->
+    	<plugin type="com.plugins.LogicDeletePlugin" />
+    	<plugin type="com.plugins.ListPagePlugin" />
+    	<!-- 注释插件 -->
+    	<plugin type="com.plugins.CommentsPlugin" />
+    	<!-- 插件结束 -->
+ 		<commentGenerator>  
+            <property name="suppressDate" value="true"/>  
+            <property name="suppressAllComments" value="true"/>  
+        </commentGenerator>  
+
+         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://192.168.1.130:3306/jdwl" userId="root" password="wyf1987">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="cn.comingnet.esjyw.cm.bean" targetProject="E:\comingnet-esjyw\src\main\java">
+ 		 <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="false" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mybatis.esjyw" targetProject="E:\comingnet-esjyw\src\main\resources">
+   			<property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.comingnet.esjyw.dao" targetProject="E:\comingnet-esjyw\src\main\java">
+         	<property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <table tableName="jdwl_notice_view" schema="${db.esjyw}" domainObjectName="TJdwlNoticeView" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<!--         
+   <table tableName="PAWN_CONSIGNMENT" schema="${db.esjyw}" domainObjectName="TPawnConsignment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+   <table tableName="PAWN_CONSIGNMENT_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TPawnConsignmentAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+   <table tableName="PAWN_CONSIGNMENT_TRADE" schema="${db.esjyw}" domainObjectName="TPawnConsignmentTrade" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+  <table tableName="OLD_CAR" schema="${db.esjyw}" domainObjectName="TOldCar" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+  <table tableName="OLD_CAR_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TOldCarAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+ <table tableName="OLD_CAR_TRADE" schema="${db.esjyw}" domainObjectName="TOldCarTrade" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>     
+<table tableName="SYS_USER" schema="${db.user}" domainObjectName="TSysUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_ORGANIZATION" schema="${db.system}" domainObjectName="TSysOrganization" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="JOB_CONFIG" schema="${db.system}" domainObjectName="TJobConfig" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="JOB_RUN_LOG" schema="${db.system}" domainObjectName="TJobRunLog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="LOG_LOGIN" schema="${db.system}" domainObjectName="TLogLogin" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="LOG_OPERATION" schema="${db.system}" domainObjectName="TLogOperation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_CONFIG" schema="${db.system}" domainObjectName="TSysConfig" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_DB_MONITOR" schema="${db.system}" domainObjectName="TSysDbMonitor" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_DICT" schema="${db.system}" domainObjectName="TSysDict" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_DICT_TYPE" schema="${db.system}" domainObjectName="TSysDictType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_MENU" schema="${db.system}" domainObjectName="TSysMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_MONITOR" schema="${db.system}" domainObjectName="TSysMonitor" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_ONLINE" schema="${db.system}" domainObjectName="TSysOnline" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_ORG_ROLE" schema="${db.system}" domainObjectName="TSysOrgRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+
+<table tableName="SYS_ROLE" schema="${db.system}" domainObjectName="TSysRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_ROLE_MENU" schema="${db.system}" domainObjectName="TSysRoleMenu" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_USER_ORG" schema="${db.user}" domainObjectName="TSysUserOrg" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_USER_ROLE" schema="${db.user}" domainObjectName="TSysUserRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+
+
+<table tableName="CAR" schema="${db.esjyw}" domainObjectName="TCar" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="CAR_ATTACHMENT" schema="esjyw" domainObjectName="TCarAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="PHONE" schema="${db.esjyw}" domainObjectName="TPhone" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="PHONE_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TPhoneAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="PHONE_TRADE" schema="${db.esjyw}" domainObjectName="TPhoneTrade" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="CAR_DISCARDE" schema="${db.esjyw}" domainObjectName="TCarDiscarde" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="CAR_DISCARDE_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TCarDiscardeAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="CAR_RENTAL" schema="${db.esjyw}" domainObjectName="TCarRental" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="CAR_REPAIR" schema="${db.esjyw}" domainObjectName="TCarRepair" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="CAR_REPAIR_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TCarRepairAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="COMPUTER" schema="${db.esjyw}" domainObjectName="TComputer" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="COMPUTER_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TComputerAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="COMPUTER_TRADE" schema="${db.esjyw}" domainObjectName="TComputerTrade" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="F_SYS_USER" schema="${db.esjyw}" domainObjectName="TFsysUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="JEWEL" schema="${db.esjyw}" domainObjectName="TJewel" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="JEWEL_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TJewelAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="JEWEL_TRADE" schema="${db.esjyw}" domainObjectName="TJewelTrade" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="OTHER_GOODS" schema="${db.esjyw}" domainObjectName="TOtherGoods" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="OTHER_GOODS_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TOtherGoodsAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="OTHER_GOODS_TRADE" schema="${db.esjyw}" domainObjectName="TOtherGoodsTrade" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="PETROL" schema="${db.esjyw}" domainObjectName="TPetrol" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="PETROL_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TPetrolAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SCRAP_METAL" schema="${db.esjyw}" domainObjectName="TScrapMetal" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SCRAP_METAL_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TScrapMetalAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SCRAP_METAL_TRADE" schema="${db.esjyw}" domainObjectName="TScrapMetalTrade" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SELLER_AUDIT" schema="${db.esjyw}" domainObjectName="TSellerAudit" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_AD" schema="${db.esjyw}" domainObjectName="TSysAd" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TSysAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_NOTICE" schema="${db.esjyw}" domainObjectName="TSysNotice" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_REPORT" schema="${db.esjyw}" domainObjectName="TSysReport" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_SELLER" schema="${db.esjyw}" domainObjectName="TSysSeller" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="EMPLOYEE" schema="${db.esjyw}" domainObjectName="TEmployee" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="HOUSE" schema="${db.esjyw}" domainObjectName="THouse" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="HOUSE_ATTACHMENT" schema="${db.esjyw}" domainObjectName="THouseAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="HOUSE_RENTAL" schema="${db.esjyw}" domainObjectName="THouseRental" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="HOTEL_USER" schema="${db.esjyw}" domainObjectName="THotelUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="HOTEL_ROOM" schema="${db.esjyw}" domainObjectName="THotelRoom" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="HOTEL_ROOM_ATTACHMENT" schema="${db.esjyw}" domainObjectName="THotelRoomAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="HOTEL_REGISTRATION" schema="${db.esjyw}" domainObjectName="THotelRegistration" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="HOTEL_REGISTRATION_ATTACHMENT" schema="${db.esjyw}" domainObjectName="THotelRegistrationAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="HOTEL_F_REGISTRATION" schema="${db.esjyw}" domainObjectName="THotelFregistration" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="LOGISTICS" schema="${db.esjyw}" domainObjectName="TLogistics" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="LOGISTICS_ATTACHMENT" schema="${db.esjyw}" domainObjectName="TLogisticsAttachment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="SYS_SELLER_CATEGORY" schema="${db.esjyw}" domainObjectName="TSysSellerCategory" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+<table tableName="CARD_READING" schema="${db.esjyw}" domainObjectName="TCardReading" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/> -->
+    </context>
+</generatorConfiguration>
